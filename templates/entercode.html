@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title></title>
+  <meta charset="utf-8">
+</head>
+<body>
+<!--If error received upon form submission, flash error message at top -->
+<!--of page -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    
+<div>
+  <h1>Enter your verification code</h1>
+  <form action="{{ url_for('enterCode', code_form=code_form, verify_id=code_form.verify_id.data) }}" method="post">
+    <dl>
+    {{ code_form.verify_id }}
+    {{ code_form.token }}
+    {{ code_form.submit }}
+    </dl>
+  </form>
+</div>
+
+</body> </html>

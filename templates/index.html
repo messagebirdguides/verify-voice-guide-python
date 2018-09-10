@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>MessageBird Voice-Based Verification Example</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+<!--If form submission results in error, flash error message -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    
+<div>
+  <h1>MessageBird Verify Example</h1>
+  <p>Enter your phone number:</p>
+  <form action="{{ url_for('submitPhone') }}" method="post">
+  <dl>
+  {{ initial_form.number }}
+  {{ initial_form.submit }}
+  </dl>
+  </form>
+
+</div>
+
+
+</body> </html>
